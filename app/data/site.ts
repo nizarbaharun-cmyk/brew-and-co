@@ -25,13 +25,12 @@ export const HOURS: ReadonlyArray<{ day: string; open: string; close: string } |
   { day: "Rabu", open: "06:00", close: "20:00" },
   { day: "Kamis", open: "06:00", close: "20:00" },
   { day: "Jumat", open: "06:00", close: "20:00" },
-  { day: "Sabtu", open: "07:00", close: "21:00" },
+  { day: "Sabtu", open: "06:00", close: "20:00" },
 ];
 
 /** Collapsed for display, so the About page does not list seven near-identical rows. */
 export const HOURS_SUMMARY = [
-  { days: "Senin – Jumat", time: "06.00 – 20.00" },
-  { days: "Sabtu", time: "07.00 – 21.00" },
+  { days: "Senin – Sabtu", time: "06.00 – 20.00" },
   { days: "Minggu", time: "08.00 – 21.00" },
 ] as const;
 
