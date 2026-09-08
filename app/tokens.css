@@ -1,0 +1,584 @@
+/* ============================================================================
+   Kedai Kopi — design tokens
+   Tailwind CSS v4.3 · CSS-first config. There is no tailwind.config.js.
+
+   Usage, in app/globals.css:
+       @import "tailwindcss";
+       @import "./tokens.css";
+
+   Structure:
+     1. Variants          — the dark-mode variant
+     2. Primitives        — raw ramps and scales (@theme, static)
+     3. Semantic aliases  — role tokens that flip in dark mode (:root / .dark)
+     4. Semantic bridge   — exposes role tokens as utilities (@theme inline)
+     5. Non-theme tokens  — z-index, durations, section rhythm (plain vars)
+     6. Utilities         — Fraunces axis presets, numerics, hit areas
+     7. Base              — element defaults and reduced motion
+
+   Read 02-design-tokens.md before adding anything here.
+   ========================================================================== */
+
+/* 1 · Variants ------------------------------------------------------------ */
+/* Class-based so a person can override the OS. The base layer below also
+   honours prefers-color-scheme for visitors who never touch the toggle.     */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 2 · Primitives ---------------------------------------------------------- */
+@theme {
+  /* -- Colour: roast (brand brown) ------------------------------------- */
+  --color-roast-50: #fbf6f2;
+  --color-roast-100: #f3e7dc;
+  --color-roast-200: #e4cbb6;
+  --color-roast-300: #cda687;
+  --color-roast-400: #a97a50;
+  --color-roast-500: #8a5a32;
+  --color-roast-600: #6a3810; /* sampled: reference button fill */
+  --color-roast-700: #552b0a;
+  --color-roast-800: #471d00; /* sampled: reference headline ink */
+  --color-roast-900: #2e1206;
+  --color-roast-950: #1a0a03;
+
+  /* -- Colour: aren (palm sugar amber) --------------------------------- */
+  --color-aren-50: #fff9ee;
+  --color-aren-100: #fef0d6;
+  --color-aren-200: #fde0ac;
+  --color-aren-300: #fdcb79;
+  --color-aren-400: #fdb64a; /* sampled: reference price badge */
+  --color-aren-500: #ee9e22;
+  --color-aren-600: #c87c11;
+  --color-aren-700: #8a5209; /* lowest step legible as text on light: 5.56:1 */
+  --color-aren-800: #6b3d06;
+
+  /* -- Colour: saucer (cool mauve neutrals) ---------------------------- */
+  --color-saucer-0: #ffffff;
+  --color-saucer-25: #fafafa; /* sampled: reference card surface */
+  --color-saucer-50: #f3eef0; /* sampled: reference page ground */
+  --color-saucer-100: #e9e2e5;
+  --color-saucer-200: #d8cfd3;
+  --color-saucer-300: #c3b8bd;
+  --color-saucer-400: #a79ba1;
+  --color-saucer-500: #8e8288; /* operable border, 3.21:1 on ground */
+  --color-saucer-600: #6e646a;
+
+  /* -- Colour: silt (warm text greys) ---------------------------------- */
+  --color-silt-100: #d7cdc0;
+  --color-silt-200: #b5a897;
+  --color-silt-300: #8a7c6c;
+  --color-silt-400: #756751;
+  --color-silt-500: #685643; /* sampled: reference body copy */
+  --color-silt-600: #4f4234;
+
+  /* -- Colour: status --------------------------------------------------- */
+  --color-pandan-100: #dff1e7;
+  --color-pandan-300: #7fc79b;
+  --color-pandan-600: #2f7a4f;
+  --color-pandan-700: #24603e;
+  --color-pandan-900: #1e3a2a;
+
+  --color-cabai-100: #fbe7e5;
+  --color-cabai-300: #f2a099;
+  --color-cabai-600: #b3261e;
+  --color-cabai-700: #8f1d17;
+  --color-cabai-900: #3a1f1c;
+
+  --color-langit-100: #dff0f5;
+  --color-langit-300: #7fc3d8;
+  --color-langit-600: #1f6f8b;
+  --color-langit-700: #17566b;
+  --color-langit-900: #1a333d;
+
+  /* -- Type families ---------------------------------------------------- */
+  /* --ff-sans and --ff-display are set on <html> by next/font. */
+  --font-sans: var(--ff-sans), "Segoe UI", system-ui, sans-serif;
+  --font-display: var(--ff-display), Georgia, "Times New Roman", serif;
+
+  /* -- Type scale ------------------------------------------------------- */
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1rem;
+  --text-2xs--letter-spacing: 0.01em;
+
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.125rem;
+  --text-xs--letter-spacing: 0.005em;
+
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.375rem;
+
+  --text-base: 1rem;
+  --text-base--line-height: 1.625rem;
+
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.8125rem;
+
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.875rem;
+  --text-xl--letter-spacing: -0.005em;
+
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2rem;
+  --text-2xl--letter-spacing: -0.01em;
+
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: 2.375rem;
+  --text-3xl--letter-spacing: -0.015em;
+
+  --text-display-sm: 2.25rem;
+  --text-display-sm--line-height: 2.625rem;
+  --text-display-sm--letter-spacing: -0.02em;
+
+  --text-display-md: 3rem;
+  --text-display-md--line-height: 3.25rem;
+  --text-display-md--letter-spacing: -0.022em;
+
+  --text-display-lg: 4rem;
+  --text-display-lg--line-height: 4.125rem;
+  --text-display-lg--letter-spacing: -0.025em;
+
+  --text-display-xl: 5rem;
+  --text-display-xl--line-height: 5rem;
+  --text-display-xl--letter-spacing: -0.03em;
+
+  /* -- Spacing ---------------------------------------------------------- */
+  /* 4px base. p-1 = 4px, p-2 = 8px, p-6 = 24px, and so on. */
+  --spacing: 0.25rem;
+
+  /* -- Radius (a hierarchy, not a preference) --------------------------- */
+  --radius-thumb: 0.5rem; /* 8px  · thumbnails, tags, avatars in lists */
+  --radius-control: 0.75rem; /* 12px · inputs, selects, small buttons */
+  --radius-card: 1rem; /* 16px · cards, modals, sheets */
+  --radius-tray: 2rem; /* 32px · the page tray. Nothing else */
+  --radius-pill: 9999px; /* buttons, chips, badges, the cart bubble */
+
+  /* -- Elevation (brown-tinted, never neutral grey) --------------------- */
+  --shadow-rest: 0 1px 2px rgb(71 29 0 / 0.06);
+  --shadow-lift:
+    0 4px 12px rgb(71 29 0 / 0.08), 0 1px 2px rgb(71 29 0 / 0.06);
+  --shadow-float:
+    0 12px 32px rgb(71 29 0 / 0.12), 0 2px 6px rgb(71 29 0 / 0.06);
+  --shadow-overlay: 0 24px 48px rgb(26 10 3 / 0.24);
+  --shadow-tray: 0 24px 64px rgb(71 29 0 / 0.1);
+
+  /* -- Easing ------------------------------------------------------------ */
+  --ease-cup: cubic-bezier(0.22, 1, 0.36, 1); /* settling, decelerating */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* everyday state change */
+
+  /* -- Containers -------------------------------------------------------- */
+  --container-tray: 75rem; /* 1200px · tray content */
+  --container-prose: 42rem; /* 672px  · long-form reading */
+  --container-form: 28rem; /* 448px  · sign in, checkout steps */
+
+  /* -- Animation --------------------------------------------------------- */
+  --animate-shimmer: shimmer 1.4s linear infinite;
+  --animate-settle: settle 600ms var(--ease-cup) both;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: -180% 0;
+  }
+  to {
+    background-position: 180% 0;
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 3 · Semantic aliases ----------------------------------------------------- */
+/* Components reference these, never the ramps above. Contrast ratios in the
+   comments are measured against the surface each token is used on.          */
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --bg: var(--color-saucer-50);
+  --surface: var(--color-saucer-0);
+  /* The ground tone, so a sunken area genuinely reads as the saucer showing
+     through. Shares a value with --bg in both themes; the roles still differ,
+     and either may move without the other. */
+  --surface-sunken: var(--color-saucer-50);
+  --surface-muted: var(--color-saucer-100);
+  --surface-inverse: var(--color-roast-900);
+
+  /* Ink */
+  --ink: var(--color-roast-800); /* 12.68:1 on bg */
+  --ink-secondary: var(--color-silt-500); /*  6.10:1 on bg */
+  --ink-muted: var(--color-silt-400); /*  4.80:1 on bg */
+  --ink-disabled: var(--color-silt-300); /* exempt: WCAG 1.4.3 */
+  --ink-inverse: var(--color-saucer-50);
+
+  /* Lines */
+  --border: var(--color-saucer-200); /* decorative only */
+  --border-strong: var(--color-saucer-500); /* operable, 3.21:1 */
+
+  /* Primary action */
+  --primary: var(--color-roast-600);
+  --primary-hover: var(--color-roast-700);
+  --primary-active: var(--color-roast-800);
+  --primary-ink: var(--color-saucer-0); /*  9.61:1 on primary */
+  --primary-subtle: var(--color-roast-100);
+
+  /* Accent — the one bright note. Surfaces only, never text. */
+  --accent: var(--color-aren-400);
+  --accent-hover: var(--color-aren-500);
+  --accent-ink: var(--color-roast-800); /*  8.29:1 on accent */
+  --accent-subtle: var(--color-aren-100);
+  --accent-text: var(--color-aren-700); /*  5.56:1 on bg */
+
+  /* Focus */
+  --focus: var(--color-roast-800); /* 12.68:1 on bg */
+
+  /* Status */
+  --success: var(--color-pandan-600);
+  --success-surface: var(--color-pandan-100);
+  --success-ink: var(--color-pandan-700);
+
+  --danger: var(--color-cabai-600);
+  --danger-surface: var(--color-cabai-100);
+  --danger-ink: var(--color-cabai-700);
+
+  --info: var(--color-langit-600);
+  --info-surface: var(--color-langit-100);
+  --info-ink: var(--color-langit-700);
+
+  /* Scrim behind modals and drawers */
+  --scrim: rgb(26 10 3 / 0.55);
+
+  /* Text on a photograph is the one place a token cannot guarantee contrast.
+     A gradient, not a flat wash: dark where the type sits, clear at the top so
+     the photograph is still legible as a photograph. Any hero using this must
+     have its contrast measured against the actual image. */
+  --scrim-photo: linear-gradient(
+    to top,
+    rgb(26 10 3 / 0.88) 0%,
+    rgb(26 10 3 / 0.72) 32%,
+    rgb(26 10 3 / 0.34) 62%,
+    rgb(26 10 3 / 0.12) 100%
+  );
+}
+
+/* Dark palette. Declared twice on purpose: once for the explicit `.dark` class
+   and once under prefers-color-scheme, so the toggle and the OS both work and
+   an explicit light choice still wins. Keep the two blocks in sync. */
+.dark {
+  color-scheme: dark;
+
+  --bg: var(--color-roast-950);
+  --surface: var(--color-roast-900);
+  --surface-sunken: var(--color-roast-950);
+  --surface-muted: #3d2413;
+  --surface-inverse: var(--color-saucer-50);
+
+  --ink: var(--color-saucer-50); /* 16.81:1 on bg */
+  --ink-secondary: var(--color-silt-200); /*  8.28:1 on bg */
+  --ink-muted: var(--color-silt-300);
+  --ink-disabled: #6a5b4c; /* exempt: WCAG 1.4.3 */
+  --ink-inverse: var(--color-roast-900);
+
+  --border: #3d2413;
+  --border-strong: #8a6647; /* operable, 3.38:1 on surface */
+
+  /* Primary inverts to a warm near-white; amber stays the accent so the two
+     never trade roles between themes. */
+  --primary: var(--color-roast-100); /* 15.87:1 on bg */
+  --primary-hover: var(--color-roast-200);
+  --primary-active: var(--color-roast-300);
+  --primary-ink: var(--color-roast-900); /* 14.33:1 on primary */
+  --primary-subtle: #3d2413;
+
+  --accent: var(--color-aren-300); /* 11.61:1 on surface */
+  --accent-hover: var(--color-aren-200);
+  --accent-ink: var(--color-roast-950); /* 12.86:1 on accent */
+  --accent-subtle: #4a3208;
+  --accent-text: var(--color-aren-300);
+
+  --focus: var(--color-aren-300); /* 11.61:1 on surface */
+
+  --success: var(--color-pandan-300);
+  --success-surface: var(--color-pandan-900);
+  --success-ink: var(--color-pandan-300);
+
+  --danger: var(--color-cabai-300);
+  --danger-surface: var(--color-cabai-900);
+  --danger-ink: var(--color-cabai-300);
+
+  --info: var(--color-langit-300);
+  --info-surface: var(--color-langit-900);
+  --info-ink: var(--color-langit-300);
+
+  --scrim: rgb(0 0 0 / 0.66);
+  --scrim-photo: linear-gradient(
+    to top,
+    rgb(0 0 0 / 0.9) 0%,
+    rgb(0 0 0 / 0.76) 32%,
+    rgb(0 0 0 / 0.38) 62%,
+    rgb(0 0 0 / 0.14) 100%
+  );
+}
+
+/* Visitors who never open the theme toggle get their OS preference.
+   `:root:not(.light)` lets an explicit light choice win. */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    color-scheme: dark;
+
+    --bg: var(--color-roast-950);
+    --surface: var(--color-roast-900);
+    --surface-sunken: var(--color-roast-950);
+    --surface-muted: #3d2413;
+    --surface-inverse: var(--color-saucer-50);
+
+    --ink: var(--color-saucer-50);
+    --ink-secondary: var(--color-silt-200);
+    --ink-muted: var(--color-silt-300);
+    --ink-disabled: #6a5b4c;
+    --ink-inverse: var(--color-roast-900);
+
+    --border: #3d2413;
+    --border-strong: #8a6647;
+
+    --primary: var(--color-roast-100);
+    --primary-hover: var(--color-roast-200);
+    --primary-active: var(--color-roast-300);
+    --primary-ink: var(--color-roast-900);
+    --primary-subtle: #3d2413;
+
+    --accent: var(--color-aren-300);
+    --accent-hover: var(--color-aren-200);
+    --accent-ink: var(--color-roast-950);
+    --accent-subtle: #4a3208;
+    --accent-text: var(--color-aren-300);
+
+    --focus: var(--color-aren-300);
+
+    --success: var(--color-pandan-300);
+    --success-surface: var(--color-pandan-900);
+    --success-ink: var(--color-pandan-300);
+
+    --danger: var(--color-cabai-300);
+    --danger-surface: var(--color-cabai-900);
+    --danger-ink: var(--color-cabai-300);
+
+    --info: var(--color-langit-300);
+    --info-surface: var(--color-langit-900);
+    --info-ink: var(--color-langit-300);
+
+    --scrim: rgb(0 0 0 / 0.66);
+  --scrim-photo: linear-gradient(
+    to top,
+    rgb(0 0 0 / 0.9) 0%,
+    rgb(0 0 0 / 0.76) 32%,
+    rgb(0 0 0 / 0.38) 62%,
+    rgb(0 0 0 / 0.14) 100%
+  );
+  }
+}
+
+/* 4 · Semantic bridge ------------------------------------------------------ */
+/* `inline` copies the value reference into each utility, so bg-surface emits
+   `background-color: var(--surface)` and follows the scope it renders in.
+   Without `inline` the dark values would never reach the utilities.         */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-inverse: var(--surface-inverse);
+
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-disabled: var(--ink-disabled);
+  --color-ink-inverse: var(--ink-inverse);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-active: var(--primary-active);
+  --color-primary-ink: var(--primary-ink);
+  --color-primary-subtle: var(--primary-subtle);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-accent-text: var(--accent-text);
+
+  --color-focus: var(--focus);
+
+  --color-success: var(--success);
+  --color-success-surface: var(--success-surface);
+  --color-success-ink: var(--success-ink);
+
+  --color-danger: var(--danger);
+  --color-danger-surface: var(--danger-surface);
+  --color-danger-ink: var(--danger-ink);
+
+  --color-info: var(--info);
+  --color-info-surface: var(--info-surface);
+  --color-info-ink: var(--info-ink);
+
+  --color-scrim: var(--scrim);
+  --color-scrim-photo: var(--scrim-photo);
+}
+
+/* 5 · Non-theme tokens ----------------------------------------------------- */
+/* Tailwind v4 has no --z-* or --duration-* namespace, so these stay plain
+   custom properties. Consume them with the shorthand: z-(--z-header),
+   duration-(--duration-fast), py-(--space-section).                          */
+:root {
+  /* Stacking. No arbitrary z-index in component code. */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-header: 100;
+  --z-dropdown: 200;
+  --z-overlay: 900;
+  --z-modal: 1000;
+  --z-toast: 1100;
+
+  /* Duration */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --duration-entrance: 600ms;
+
+  /* Vertical rhythm, responsive */
+  --space-section: 4rem; /* 64px */
+  --space-section-lg: 6rem; /* 96px */
+  --space-block: 2rem; /* 32px */
+  --space-gutter: 1.25rem; /* 20px */
+
+  /* Measure */
+  --measure-prose: 62ch;
+  --measure-display: 14ch;
+}
+
+@media (width >= 48rem) {
+  :root {
+    --space-gutter: 2rem; /* 32px */
+  }
+}
+
+@media (width >= 64rem) {
+  :root {
+    --space-section: 6rem; /* 96px */
+    --space-section-lg: 9rem; /* 144px */
+    --space-block: 2.5rem; /* 40px */
+    --space-gutter: 3rem; /* 48px */
+  }
+}
+
+/* 6 · Utilities ------------------------------------------------------------ */
+/* Fraunces axis presets. opsz roughly tracks the rendered size; it is what
+   keeps the hero from reading as scaled-up body serif. */
+@utility type-hero {
+  font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 96;
+}
+
+@utility type-section {
+  font-variation-settings: "SOFT" 20, "WONK" 0, "opsz" 36;
+}
+
+@utility type-display-small {
+  font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 24;
+}
+
+/* Prices, weights, quantities, ratings, countdowns. */
+@utility numeric {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* The one focus treatment in the system. */
+@utility focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+}
+
+/* 7 · Base ----------------------------------------------------------------- */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Every focusable element gets the ring unless it opts out deliberately. */
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  /* Display type always uses the serif and the section axis preset. */
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-variation-settings: "SOFT" 20, "WONK" 0, "opsz" 36;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+  }
+
+  /* Prices and quantities line up by default wherever numbers are tabulated. */
+  th,
+  td {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-ink);
+  }
+}
+
+/* Motion is opt-in for anyone who has asked for less of it. State changes must
+   still be visible without it — see 01-style-guide.md, Motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Extends a short control's hit area to the 44px minimum without changing how
+   it looks. The guide allows a smaller visual box; it does not allow a smaller
+   target. See docs/design/01-style-guide.md, Accessibility floor. */
+@utility touch-target {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 50%;
+    height: max(100%, 2.75rem);
+    translate: 0 -50%;
+  }
+}

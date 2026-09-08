@@ -1,0 +1,24 @@
+id,category,name,description,price,badge
+espresso,espresso drinks,Espresso,"Satu shot Gayo ditarik 28 detik. Diminum di tempat, sambil berdiri.",15000,
+piccolo,espresso drinks,Piccolo,Satu shot dengan 60 ml susu panas. Rasio susu paling kecil di menu.,20000,
+cappuccino,espresso drinks,Cappuccino,"Sepertiga espresso, sepertiga susu, sepertiga busa.",24000,
+caffe-latte,espresso drinks,Caffe latte,"Dua shot Toraja dengan susu panas, busanya tipis.",26000,
+kopi-susu-panas,espresso drinks,Kopi susu panas,Espresso dan susu panas dengan gula aren secukupnya.,20000,populer
+kopi-tubruk,brewed coffee,Kopi tubruk,Gayo giling kasar diseduh langsung di cangkir. Diminum pelan.,12000,favorit
+v60-kintamani,brewed coffee,V60 Kintamani,"Diseduh per gelas, 15 gram biji. Terang, ada jeruk dan bunga.",28000,
+es-kopi-susu-gula-aren,cold drinks,Es kopi susu gula aren,"Espresso, susu segar, gula aren cair. Yang paling laris tiap pagi.",18000,populer
+es-americano,cold drinks,Es americano,"Dua shot Toraja, air dingin, tanpa gula. Pahitnya bersih.",20000,
+es-kopi-pandan,cold drinks,Es kopi pandan,"Sirup pandan buatan sendiri, susu, dan satu shot Kintamani.",22000,baru
+es-kopi-kelapa,cold drinks,Es kopi kelapa,"Espresso, air kelapa muda, sedikit gula aren. Segar dan tidak berat.",25000,
+cold-brew-12-jam,cold drinks,Cold brew 12 jam,Direndam semalam lalu disaring pagi. Halus dan rendah asam.,27000,
+es-teh-melati,cold drinks,Es teh melati,"Teh melati diseduh pagi, tanpa gula. Bisa minta manis.",12000,
+croissant-mentega,pastries,Croissant mentega,Dipanggang ulang tiap pagi. Renyah di luar dan berlapis di dalam.,25000,
+pain-au-chocolat,pastries,Pain au chocolat,"Cokelat 55 persen, dua batang di dalam lipatan.",28000,
+pisang-cokelat-panggang,pastries,Pisang cokelat panggang,"Pisang raja, cokelat leleh, kulit lumpia dipanggang.",18000,populer
+roti-bakar-srikaya,sandwiches,Roti bakar srikaya,"Roti gandeng dibakar, srikaya buatan sendiri, mentega asin.",22000,
+sandwich-telur-mayo,sandwiches,Sandwich telur mayo,"Telur rebus, mayones, daun bawang, roti tawar dingin.",35000,
+sandwich-ayam-sambal-matah,sandwiches,Sandwich ayam sambal matah,"Ayam suwir, sambal matah, selada, roti sourdough.",48000,populer
+croque-monsieur,sandwiches,Croque monsieur,"Ham, keju leleh, saus bechamel. Dipanggang sampai berkerak.",52000,
+gayo-200-g,coffee beans,"Gayo, 200 g","Aceh Tengah, 1.400 mdpl. Cokelat gelap dan sedikit rempah.",95000,
+toraja-200-g,coffee beans,"Toraja, 200 g","Sulawesi Selatan, 1.600 mdpl. Asamnya rendah, badannya tebal.",105000,
+kintamani-200-g,coffee beans,"Kintamani, 200 g","Bangli, 1.200 mdpl. Terang, ada jeruk dan bunga.",98000,
