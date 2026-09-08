@@ -20,19 +20,18 @@ export const SHOP = {
 /** Indexed by JavaScript's Date#getDay(): 0 = Minggu. `null` means closed. */
 export const HOURS: ReadonlyArray<{ day: string; open: string; close: string } | null> = [
   { day: "Minggu", open: "08:00", close: "21:00" },
-  { day: "Senin", open: "07:00", close: "21:00" },
-  { day: "Selasa", open: "07:00", close: "21:00" },
-  { day: "Rabu", open: "07:00", close: "21:00" },
-  { day: "Kamis", open: "07:00", close: "21:00" },
-  { day: "Jumat", open: "07:00", close: "23:00" },
-  { day: "Sabtu", open: "07:00", close: "23:00" },
+  { day: "Senin", open: "06:00", close: "20:00" },
+  { day: "Selasa", open: "06:00", close: "20:00" },
+  { day: "Rabu", open: "06:00", close: "20:00" },
+  { day: "Kamis", open: "06:00", close: "20:00" },
+  { day: "Jumat", open: "06:00", close: "20:00" },
+  { day: "Sabtu", open: "07:00", close: "21:00" },
 ];
 
 /** Collapsed for display, so the About page does not list seven near-identical rows. */
 export const HOURS_SUMMARY = [
-  { days: "Senin – Kamis", time: "07.00 – 21.00" },
-  { days: "Jumat", time: "07.00 – 23.00" },
-  { days: "Sabtu", time: "07.00 – 23.00" },
+  { days: "Senin – Jumat", time: "06.00 – 20.00" },
+  { days: "Sabtu", time: "07.00 – 21.00" },
   { days: "Minggu", time: "08.00 – 21.00" },
 ] as const;
 
@@ -52,9 +51,9 @@ export const EVENTS = [
   {
     id: "open-mic",
     name: "Open mic",
-    when: "Setiap Jumat, 19.30 – 22.00",
+    when: "Setiap Jumat, 17.30 – 20.00",
     description:
-      "Bawa gitar, puisi, atau apa saja yang mau dibacakan. Daftar di kasir mulai jam tujuh, satu orang dapat dua lagu. Tidak ada tiket masuk.",
+      "Bawa gitar, puisi, atau apa saja yang mau dibacakan. Daftar di kasir mulai jam lima, satu orang dapat dua lagu. Tidak ada tiket masuk.",
     image: "/img/acara/open-mic.webp",
     imageAlt: "Seseorang memainkan gitar akustik di ruang kedai kopi",
   },
