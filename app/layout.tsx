@@ -39,9 +39,13 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
+    // Ekstensi browser (mis. Trancy, Grammarly) menempelkan atribut ke <html>
+    // sebelum React hydrate. `suppressHydrationWarning` hanya berlaku satu level,
+    // jadi mismatch di dalam pohon tetap terlaporkan seperti biasa.
     <html
       lang="id"
       className={`${display.variable} ${sans.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full font-sans">
         <a
